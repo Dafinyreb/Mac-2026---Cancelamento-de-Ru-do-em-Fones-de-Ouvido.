@@ -1,0 +1,1 @@
+# Mac-2026---Cancelamento-de-Ru-do-em-Fones-de-Ouvido.
