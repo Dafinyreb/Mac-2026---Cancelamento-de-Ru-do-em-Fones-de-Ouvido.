@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mac 2026 - Cancelamento de Ruído em Fones de Ouvido</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- MathJax para renderização de fórmulas matemáticas -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="hero-header">
+    <div class="container">
+      <span class="badge-tag">Física & Matemática no Ensino Médio</span>
+      <h1>Mac 2026 - Cancelamento de Ruído em Fones de Ouvido</h1>
+      <p class="subtitle">Entendendo a Física e a Trigonometria por trás do Cancelamento Ativo de Ruído (ANC)</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- SEÇÃO 1: PRINCÍPIO DE FUNCIONAMENTO DO ANC -->
+    <section class="card intro-card">
+      <h2>O que é o Cancelamento Ativo de Ruído (ANC)?</h2>
+      <p class="lead-text">
+        O fone com ANC usa duas partes principais para reduzir sons indesejados:
+      </p>
+      
+      <div class="steps-grid">
+        <div class="step-box">
+          <div class="step-num">1</div>
+          <h3>Microfone Externo</h3>
+          <p>Um microfone localizado do lado de fora do fone capta continuamente o barulho do ambiente em tempo real.</p>
+        </div>
+        
+        <div class="step-box">
+          <div class="step-num">2</div>
+          <h3>Processador Interno (DSP)</h3>
+          <p>Um pequeno chip de computador analisa o ruído captado e calcula instantaneamente um som inverso (onda sonora oposta).</p>
+        </div>
+
+        <div class="step-box">
+          <div class="step-num">3</div>
+          <h3>Interferência Destrutiva</h3>
+          <p>Quando a onda oposta se junta ao ruído original no alto-falante, as duas ondas se anulam, fazendo o barulho desaparecer na nossa percepção.</p>
+        </div>
+      </div>
+
+      <div class="quote-box">
+        <p>💡 <strong>Resumo Simples:</strong> É como se o fone “escutasse” o som ao redor e produzisse outro som para “apagar” o ruído antes que ele chegue aos nossos ouvidos.</p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: COMO CHEGAMOS A ISSO? (O CAMINHO CIENTÍFICO) -->
+    <section class="card path-card">
+      <h2>Como chegamos a essa tecnologia? (O Caminho da Ciência)</h2>
+      <p>O cancelamento de ruído não surgiu do nada. Ele é o resultado da junção de séculos de descobertas na Física e na Matemática:</p>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-badge">1</div>
+          <div class="timeline-content">
+            <h3>1. O Som como Onda Mecânica</h3>
+            <p>Descobriu-se que o som é uma onda de pressão que viaja pelo ar formando regiões de compressão (picos) e rarefação (vales).</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-badge">2</div>
+          <div class="timeline-content">
+            <h3>2. O Princípio da Superposição</h3>
+            <p>Quando duas ondas se encontram no mesmo ponto do espaço, suas amplitudes se somam. Se uma onda empurra o ar para frente e a outra puxa para trás com a mesma força, a soma das duas resulta em zero pressão adicional (silêncio!).</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-badge">3</div>
+          <div class="timeline-content">
+            <h3>3. Decomposição de Fourier (Ruídos Puros)</h3>
+            <p>O matemático Joseph Fourier provou que qualquer ruído complexo do mundo real (como o barulho de um motor ou avião) pode ser decomposto em uma soma de ondas puras simples (senos e cossenos).</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-badge">4</div>
+          <div class="timeline-content">
+            <h3>4. Microprocessadores em Tempo Real</h3>
+            <p>Com o avanço dos chips de computador modernos, tornou-se possível calcular a inversão matemática de uma onda em frações de microssegundos, rápido o suficiente para anular o som antes de atingir o tímpano.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: LABORATÓRIO INTERATIVO -->
+    <section class="card lab-card">
+      <h2>Laboratório Interativo de Ondas Sonoras</h2>
+      <p>Escolha um modo abaixo para ver as ondas em ação. No <strong>Modo Microfone</strong>, o site capta o som do ambiente ao seu redor via microfone externo!</p>
+
+      <!-- BOTÕES DE NAVEGAÇÃO DOS MODOS -->
+      <div class="tab-buttons">
+        <button id="btn-tab-mic" class="tab-btn active" onclick="switchMode('mic')">🎙️ Modo 1: Captação Externa via Microfone</button>
+        <button id="btn-tab-math" class="tab-btn" onclick="switchMode('math')">📐 Modo 2: Simulador Matemático ($f(x)$ e $g(x)$)</button>
+      </div>
+
+      <!-- PAINEL MODO 1: MICROFONE EXTERNO -->
+      <div id="panel-mic" class="tab-panel active-panel">
+        <div class="controls-bar">
+          <button id="mic-toggle-btn" class="action-btn" onclick="toggleMicrophone()">Activar Microfone Externo</button>
+          <div class="status-indicator">
+            <span id="mic-status-dot" class="dot offline"></span>
+            <span id="mic-status-text">Microfone Desligado</span>
+          </div>
+        </div>
+
+        <div class="mic-instructions">
+          <p>📢 <strong>Como testar:</strong> Ligue o microfone, fale ou faça um ruído constante (como um assobio ou o barulho de um ventilador). O sistema captará o ruído externo real, calculará a onda inversa no processador e demonstrará a anulação no gráfico!</p>
+        </div>
+
+        <!-- MÉTICAS E BARRAS DE NÍVEL DE ÁUDIO -->
+        <div class="audio-meters">
+          <div class="meter-box">
+            <span>Volume Captado:</span>
+            <div class="meter-bar"><div id="mic-level-bar" class="meter-fill orange"></div></div>
+          </div>
+          <div class="meter-box">
+            <span>Sinal Resultante (Pós-ANC):</span>
+            <div class="meter-bar"><div id="result-level-bar" class="meter-fill gold"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAINEL MODO 2: SIMULADOR MATEMÁTICO -->
+      <div id="panel-math" class="tab-panel">
+        <div class="math-sliders-grid">
+          <div class="slider-group">
+            <label for="slider-a">Offset Vertical ($a$): <span id="val-a">0.0</span></label>
+            <input type="range" id="slider-a" min="-2" max="2" step="0.1" value="0" oninput="updateMathParams()">
+          </div>
+
+          <div class="slider-group">
+            <label for="slider-b">Amplitude / Volume ($b$): <span id="val-b">1.0</span></label>
+            <input type="range" id="slider-b" min="0.1" max="2" step="0.1" value="1" oninput="updateMathParams()">
+          </div>
+
+          <div class="slider-group">
+            <label for="slider-c">Frequência Angular ($c$): <span id="val-c">2.0</span></label>
+            <input type="range" id="slider-c" min="0.5" max="8" step="0.5" value="2" oninput="updateMathParams()">
+          </div>
+
+          <div class="slider-group">
+            <label for="slider-d">Deslocamento de Fase ($d$ em rad): <span id="val-d">3.14 (π rad)</span></label>
+            <input type="range" id="slider-d" min="0" max="6.28" step="0.1" value="3.14" oninput="updateMathParams()">
+          </div>
+        </div>
+
+        <div class="preset-buttons">
+          <button class="preset-btn" onclick="setPreset('anc')">🎯 Configurar Cancelamento Perfeito ($d = \pi$)</button>
+          <button class="preset-btn" onclick="setPreset('constructive')">🔊 Configurar Interferência Construtiva ($d = 0$)</button>
+          <button class="preset-btn" onclick="setPreset('cos')">🌊 Relação Seno/Cosseno ($d = \pi/2$)</button>
+        </div>
+      </div>
+
+      <!-- VISUALIZADOR EM CANVAS (OSCILOSCÓPIO) -->
+      <div class="canvas-container">
+        <canvas id="oscilloscope" width="900" height="350"></canvas>
+        <div class="legend-bar">
+          <div class="legend-item"><span class="color-dot mic-color"></span> Ruído Captado / $f(x)$</div>
+          <div class="legend-item"><span class="color-dot anti-color"></span> Anti-Ruído Processado / $g(x)$</div>
+          <div class="legend-item"><span class="color-dot result-color"></span> Som Resultante (Interferência)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: A MATEMÁTICA DAS ONDAS (FÓRMULAS E DECOMPOSIÇÃO) -->
+    <section class="card math-explain-card">
+      <h2>A Matemática por Trás das Ondas Sonoras</h2>
+      <p>As funções trigonométricas $f(x) = a + b \cdot \sin(cx + d)$ e $g(x) = a + b \cdot \cos(cx + d)$ descrevem perfeitamente o comportamento de uma onda sonora pura. Vamos decompor cada parâmetro para entender o seu papel:</p>
+
+      <div class="formula-box">
+        <div class="formula-title">Equação Fundamental do Ruído Sonora:</div>
+        <div class="math-eq">$$f(x) = a + b \cdot \sin(cx + d)$$</div>
+        <div class="math-eq">$$g(x) = a + b \cdot \cos(cx + d)$$</div>
+      </div>
+
+      <div class="params-grid">
+        <div class="param-card">
+          <div class="param-letter">a</div>
+          <div class="param-body">
+            <h3>Deslocamento Vertical (Offset)</h3>
+            <p>Representa o nível médio de pressão atmosférica de equilíbrio. Em áudio digital, representa o deslocamento do ponto zero da onda.</p>
+          </div>
+        </div>
+
+        <div class="param-card">
+          <div class="param-letter">b</div>
+          <div class="param-body">
+            <h3>Amplitude (Volume do Som)</h3>
+            <p>Determina a intensidade ou o volume do ruído. Quanto maior o valor de $b$, mais alto é o barulho percebido pelos ouvidos.</p>
+          </div>
+        </div>
+
+        <div class="param-card">
+          <div class="param-letter">c</div>
+          <div class="param-body">
+            <h3>Frequência Angular ($c = 2\pi f$)</h3>
+            <p>Define o tom do som. Frequências altas ($c$ grande) geram sons agudos (ex: apito). Frequências baixas ($c$ pequeno) geram sons graves (ex: motor de avião).</p>
+          </div>
+        </div>
+
+        <div class="param-card">
+          <div class="param-letter">d</div>
+          <div class="param-body">
+            <h3>Fase Inicial (O Segredo do ANC!)</h3>
+            <p>Determina a posição horizontal inicial da onda no tempo. Ao somar $\pi$ radianos ($180^\circ$) na fase, a onda é perfeitamente invertida!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="proof-card">
+        <h3>Demonstração Matemática da Anulação Sonorada</h3>
+        <p>Utilizando a identidade trigonométrica da adição de arcos $\sin(x + \pi) = -\sin(x)$, se o processador gerar uma onda $g(x)$ com fase invertida em $\pi$ radianos:</p>
+        <div class="math-eq">
+          $$f(x) = b \cdot \sin(cx)$$
+        </div>
+        <div class="math-eq">
+          $$g(x) = b \cdot \sin(cx + \pi) = -b \cdot \sin(cx)$$
+        </div>
+        <div class="math-eq highlight-eq">
+          $$\text{Soma Resultante} = f(x) + g(x) = b \cdot \sin(cx) + (-b \cdot \sin(cx)) = 0$$
+        </div>
+        <p>O resultado é identicamente igual a zero em todos os pontos do tempo. Isso significa ausência total de variação de pressão sonora: <strong>Silêncio!</strong></p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 5: GUIA PEDAGÓGICO PARA PROFESSORES E ALUNOS -->
+    <section class="card edu-card">
+      <h2>Guia Pedagógico por Ano do Ensino Médio</h2>
+      <p>Este material foi elaborado para conectar os conteúdos curriculares de Física e Matemática com tecnologias do cotidiano dos estudantes.</p>
+
+      <div class="grades-grid">
+        <!-- 1º ANO -->
+        <div class="grade-card">
+          <div class="grade-header grade-1">1º Ano do Ensino Médio</div>
+          <div class="grade-body">
+            <h4>Física - Ondulatória Básica</h4>
+            <ul>
+              <li><strong>Conceito de Onda:</strong> Propagação de energia sem transporte de matéria.</li>
+              <li><strong>Elementos da Onda:</strong> Cristal (picos), Vale (depressões), Comprimento de onda ($\lambda$).</li>
+              <li><strong>Velocidade de Propagação:</strong> Aplicação da equação fundamental $v = \lambda \cdot f$.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2º ANO -->
+        <div class="grade-card">
+          <div class="grade-header grade-2">2º Ano do Ensino Médio</div>
+          <div class="grade-body">
+            <h4>Física & Matemática - Acústica e Trigonometria</h4>
+            <ul>
+              <li><strong>Trigonometria:</strong> Estudo das funções $y = \sin(x)$ e $y = \cos(x)$, período e amplitude.</li>
+              <li><strong>Fenômenos Ondulatórios:</strong> Superposição de ondas e interferência construtiva vs. destrutiva.</li>
+              <li><strong>Qualidades do Som:</strong> Altura (frequência), Intensidade (amplitude) e Timbre.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3º ANO -->
+        <div class="grade-card">
+          <div class="grade-header grade-3">3º Ano do Ensino Médio</div>
+          <div class="grade-body">
+            <h4>Física Aplicada & Tecnologia</h4>
+            <ul>
+              <li><strong>Processamento Digital de Sinais (DSP):</strong> Como microcontroladores convertem som analógico em dados digitais.</li>
+              <li><strong>Análise de Fourier:</strong> Decomposição de ruídos do mundo real em frequências puras.</li>
+              <li><strong>Aplicações Tecnológicas:</strong> Cancelamento ativo de ruído em aviação, automóveis e fones de ouvido modernos.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="main-footer">
+    <div class="container">
+      <p><strong>Mac 2026 - Cancelamento de Ruído em Fones de Ouvido</strong></p>
+      <p>Projeto educacional desenvolvido para professores e estudantes do Ensino Médio.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
